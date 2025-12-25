@@ -253,7 +253,7 @@ height: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-        position: relative;
+    position: relative;
 
 }
 .hero::after{
@@ -362,6 +362,7 @@ height: 12px;
     background: linear-gradient(270deg, #CAE1F3 -6.41%, rgba(202, 225, 243, 0) 50.26%, #CAE1F3 106.92%);
 
 }
+
 
 .dashboard-img {
     width: 100%;
