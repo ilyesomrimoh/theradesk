@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheraDesk - Tarifs</title>
+    <link rel="stylesheet" href="tarifs.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="hero" id="accueil">
+        <header class="header">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="./images/Logo.svg" alt="logo" />
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/" class="nav-link">Accueil</a></li>
+                    <li><a href="./produit.html" class="nav-link">Produit</a></li>
+                    <li><a href="#usage" class="nav-link">Cas d'usage</a></li>
+                    <li><a href="./tarifs.html" class="nav-link">Tarifs</a></li>
+                    <li><a href="#blog" class="nav-link">Blog</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <button class="btn-demo">
+                        <p>Demander une démo</p>
+                        <img src="./images/arrow-right.svg" alt="" class="arrow-img" />
+                    </button>
+                </div>
+                <button class="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </header>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Trouvez un plan pour votre
+                    <span class="highlight">manière de travailler</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Rejoignez notre communauté et révolutionnez votre pratique. Choisissez le plan qui correspond à vos
+                    besoins.
+                </p>
+
+            </div>
+
+            <!-- Pricing Toggle -->
+            <div class="pricing-toggle-container">
+                <div class="pricing-toggle">
+                    <button class="toggle-btn active" id="monthlyBtn">Mensuel</button>
+                    <button class="toggle-btn" id="yearlyBtn">Annuel <span class="toggle-badge">économisez jusqu'à
+                            20%</span></button>
+                </div>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="pricing-cards-container">
+                <!-- Card 1: Starter -->
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <div>
+                            <h3>Starter</h3>
+                            <p class="card-desc">La manière la plus simple de démarrer avec TheraDesk et structurer vos
+                                séances dès aujourd'hui.</p>
+                        </div>
+                        <div class="card-price">
+                            <span class="amount">$40</span>
+                            <span class="period">Par mois</span>
+                        </div>
+                        <div class="card-sliders">
+                            <div class="slider-group">
+                                <div class="slider-label">
+                                    <span class="slider-period">Séances par mois</span>
+                                    <div class="slider-value"><img src="./images/seance.svg" alt="">
+                                        <p>80 séances</p>
+                                    </div>
+                                </div>
+                                <div class="range-parent">
+                                    <input type="range" min="40" max="120" value="80" step="40" class="pricing-range"
+                                        disabled>
+                                    <div class="slider-scale">
+                                        <span>40</span>
+                                        <span>80</span>
+                                        <span>120</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <div class="slider-label">
+                                    <span class="slider-period">Sessions virtuelles</span>
+                                    <div class="slider-value"><img src="./images/video.svg" alt=""> 20 heures</div>
+                                </div>
+                                <div class="range-parent">
+
+                                    <input type="range" min="0" max="30" value="20" class="pricing-range" disabled>
+                                    <div class="slider-scale">
+                                        <span>0</span>
+                                        <span>10</span>
+                                        <span>20</span>
+                                        <span>50</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <ul class="card-features">
+                        <li><img src="./images/Check icon.svg" alt="check"> Gestion des patients</li>
+                        <li><img src="./images/Check icon.svg" alt="check"> Administration de tests standardisés</li>
+                        <li><img src="./images/Check icon.svg" alt="check"> Analyse de sentiment</li>
+                        <li><img src="./images/Check icon.svg" alt="check"> Résumé des séances à partir de vos notes,
+                            d'un fichier audio ou texte</li>
+                        <li><img src="./images/Check icon.svg" alt="check"> Diagnostic intelligent par IA</li>
+                        <li><img src="./images/Check icon.svg" alt="check"> Gestion de la documentation patient</li>
+                        <li><img src="./images/Check icon.svg" alt="check"> Chat IA TheraDesk</li>
+                        <li><img src="./images/Check icon.svg" alt="check"> Support téléphonique et en ligne</li>
+                    </ul>
+                    <div class="btn-parent">
+                        <button class="btn-card">Commencer</button>
+                        <p class="cancel-text">Changer de plan ou résilier à tout moment</p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Expert -->
+                <div class="pricing-card popular">
+                    <div class="card-header">
+                        <div class="popular-badge">Populaire</div>
+                        <div>
+                            <h3>Expert</h3>
+                            <p class="card-desc">Passez en mode autopilote et laissez TheraDesk analyser vos séances de
+                                thérapie pour vous.</p>
+                        </div>
+                        <div class="card-price">
+                            <span class="amount">$50</span>
+                            <span class="period">Par mois</span>
+                        </div>
+                        <div class="card-sliders">
+                            <div class="slider-group">
+                                <div class="slider-label">
+                                    <span class="slider-period">Séances par mois</span>
+                                    <div class="slider-value"><img src="./images/seance.svg" alt="">
+                                        <p>80 séances</p>
+                                    </div>
+                                </div>
+                                <div class="range-parent">
+                                    <input type="range" min="40" max="120" value="80" class="pricing-range" disabled>
+                                    <div class="slider-scale">
+                                        <span>40</span>
+                                        <span>80</span>
+                                        <span>120</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slider-group">
+                                <div class="slider-label">
+                                    <span class="slider-period">Sessions virtuelles</span>
+                                    <div class="slider-value"><img src="./images/video.svg" alt=""> 20 heures</div>
+                                </div>
+                                <div class="range-parent">
+                                    <input type="range" min="0" max="30" step="10" value="20" class="pricing-range" disabled>
+                                    <div class="slider-scale">
+                                        <span>0</span>
+                                        <span>10</span>
+                                        <span>20</span>
+                                        <span>50</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <ul class="card-features">
+                        <li><img src="./images/Check icon.svg" alt="check"> L'ensemble des fonctionnalités inclues
+                            dans le pack starter</li>
+                        <li><img src="./images/Check icon.svg" alt="check"> Enregistrement et retranscription
+                            automatique de vos séances de thérapies</li>
+                        <li><img src="./images/Check icon.svg" alt="check"> Résumés de séances générés à partir des
+                            transcririons réalisées par Theradesk</li>
+                    </ul>
+                    <div class="btn-parent">
+
+                        <button class="btn-demo tarif">
+                            <p>Commencer</p>
+                        </button>
+                        <p class="cancel-text">Changer de plan ou résilier à tout moment</p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Entreprise -->
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <div>
+                            <h3>Entreprise</h3>
+                            <p class="card-desc">Une solution centralisée pour les cabinets et cliniques
+                                multi-praticiens
+                                qui veulent uniformiser la façon de leur travail</p>
+                        </div>
+                        <div class="card-price">
+                            <span class="amount custom">Devis sur demande</span>
+                        </div>
+                        <div class="card-sliders">
+                            <div class="slider-group">
+                                <div class="slider-label">
+                                    <span class="slider-period">Séances par mois</span>
+                                    <div class="slider-value"><img src="./images/seance.svg" alt="">
+                                        <p>80 séances</p>
+                                    </div>
+                                </div>
+                                <div class="range-parent">
+
+                                    <input type="range" min="40" max="120" value="80" class="pricing-range" disabled>
+                                    <div class="slider-scale">
+                                        <span>40</span>
+                                        <span>80</span>
+                                        <span>120</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="slider-group">
+                                <div class="slider-label">
+                                    <span class="slider-period">Sessions virtuelles</span>
+                                    <div class="slider-value"><img src="./images/video.svg" alt=""> 20 heures</div>
+                                </div>
+                                <div class="range-parent">
+
+                                    <input type="range" min="0" max="30" value="20" class="pricing-range" disabled>
+                                    <div class="slider-scale">
+                                        <span>0</span>
+                                        <span>10</span>
+                                        <span>20</span>
+                                        <span>50</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <ul class="card-features">
+                        <li><img src="./images/Check icon.svg" alt="check"> L'ensemble des fonctionnalités inclues
+                            dans le pack starter ou expert</li>
+                        <li><img src="./images/Check icon.svg" alt="check"> Personnalisation des facture et de la
+                            plateforme avec le logo du cabinet</li>
+                        <li><img src="./images/Check icon.svg" alt="check"> Echange de dossier patients entre
+                            professionnels du cabinet</li>
+                    </ul>
+                    <div class="btn-parent">
+
+                        <button class="btn-card">Contactez le service commercial</button>
+                        <p class="cancel-text">Changer de plan ou résilier à tout moment</p>
+                    </div>
+                </div> <!-- End Card 3 -->
+            </div> <!-- End Pricing Cards Container -->
+
+        </div>
+
+    </section>
+    <section class="review-section">
+        <div class="container">
+            <div class="pricing-grid-header scroll-animate">
+                <div class="pricing-category-tag features-tag">
+                    <img src="./images/ai-magic.svg" alt="" />
+                    <p>Témoignages</p>
+                </div>
+                <div class="review">
+                    <h3>L'intégration sans accroc avec nos outils existants a amélioré notre workflow et renforcé notre
+                        <br> efficacité globale.
+                    </h3>
+                    <div class="review-person">
+                        <img src="./images/person.svg" alt="">
+                        <div class="review-person-info">
+                            <h4>Michael Brown</h4>
+                            <p>Directeur des opérations chez Zyntellix</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-secondary-hero">Lire l'étude de cas</button>
+
+            </div>
+        </div>
+    </section>
+    <!-- Data Security Section -->
+    <section class="pricing-grid-section">
+        <div class="container">
+            <div class="pricing-grid-header scroll-animate">
+                <div class="pricing-category-tag features-tag">
+                    <img src="./images/ai-magic.svg" alt="" />
+                    <p>Flexible</p>
+                </div>
+                <h2 class="pricing-grid-title">
+                    Payez uniquement pour ce que vous utilisez
+                </h2>
+                <p class="pricing-grid-desc">
+                    Adaptez votre utilisation à vos besoins réels : choisissez le nombre de séances présentielles et
+                    virtuelles qui vous conviennent, suivez en temps réel votre consommation, et ajustez votre
+                    abonnement facilement sans gaspillage ni surprises.
+                </p>
+            </div>
+            <div class="pricing-features-container">
+                <div class="pricing-features-item scroll-animate float-on-hover">
+                    <img src="./images/Frame.svg" alt="" />
+                    <div class="pricing-item-body">
+                        <h3>Usage Flexible</h3>
+                        <p>
+                            Choisissez le nombre de séances présentielles et virtuelles qui correspondent à vos besoins.
+                        </p>
+                    </div>
+                </div>
+                <div class="pricing-features-item scroll-animate delay-1 float-on-hover">
+                    <img src="./images/Frame-1.svg" alt="" />
+                    <div class="pricing-item-body">
+                        <h3>Tarification Transparente</h3>
+                        <p>
+                            Sachez toujours exactement combien de séances il vous reste with un suivi en temps réel.
+                        </p>
+                    </div>
+                </div>
+                <div class="pricing-features-item scroll-animate delay-2 float-on-hover">
+                    <img src="./images/Frame-2.svg" alt="" />
+                    <div class="pricing-item-body">
+                        <h3>Pas de Gaspillage</h3>
+                        <p>
+                            Commencez petit et mettez à niveau votre abonnement mensuel en fonction de votre utilisation
+                            et du volume de défis.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pricing-features-item scroll-animate delay-2 float-on-hover">
+                    <img src="./images/Frame-3.svg" alt="" />
+                    <div class="pricing-item-body">
+                        <h3>Support Prioritaire</h3>
+                        <p>
+                            Bénéficiez d’un accompagne-ment rapide pour toute question ou besoin spécifique, quand vous
+                            en avez besoin.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Dashboard Stats Section -->
+    <section class="dashboard-section">
+        <div class="container">
+            <div class="dashboard-preview">
+                <div class="stats-overlay">
+                    <div class="stat-item scroll-animate">
+                        <div class="stat-number">4H</div>
+                        <p class="stat-label">
+                            Gagnées par jour en <br />
+                            moyenne
+                        </p>
+                    </div>
+                    <div class="stat-item scroll-animate delay-1">
+                        <div class="stat-number">20+</div>
+                        <p class="stat-label">
+                            Tests standardisés disponibles dans note bibliothèque
+                        </p>
+                    </div>
+                    <div class="stat-item scroll-animate delay-2">
+                        <div class="stat-number">10+</div>
+                        <p class="stat-label">
+                            Plus de visibilité pour les communications officielles.
+                        </p>
+                    </div>
+                    <div class="stat-item scroll-animate delay-3">
+                        <div class="stat-number">2x</div>
+                        <p class="stat-label">
+                            Plus d'efficacité dans la gestion complète de votre cabinet.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="faq-container">
+                <div class="faq-intro scroll-animate">
+                    <div class="tag">
+                        <img src="./images/ai-magic.svg" alt="" />
+                        <p>FAQ</p>
+                    </div>
+                    <h2 class="section-title">Questions fréquentes</h2>
+                    <p class="section-intro">
+                        Vous vous posez peut-être des questions sur la sécurité,
+                        l'utilisation ou le fonctionnement de TheraDesk. Retrouvez ici
+                        toutes les réponses pour comprendre comment notre plateforme
+                        simplifie votre pratique, protège vos données et vous fait gagner
+                        du temps au quotidien.
+                    </p>
+                </div>
+                <div class="faq-accordion">
+                    <div class="faq-accordion-item">
+                        <button class="faq-accordion-header">
+                            <span class="faq-number">1.</span>
+                            <span class="faq-question-text">Ai-je besoin d'avoir des connaissances particulières pour
+                                utiliser TheraDesk ?</span>
+                            <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>
+                                Aucune compétence préalable en paie n'est requise ! C'est
+                                justement l'un des principaux avantages de TheraDesk : notre
+                                plateforme est conçue pour être intuitive. En cas de besoin,
+                                notre équipe technique est là pour vous aider.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-accordion-item">
+                        <button class="faq-accordion-header">
+                            <span class="faq-number">2.</span>
+                            <span class="faq-question-text">Bénéficierai-je d'un accompanement dédié à mon
+                                cabinet?</span>
+                            <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>
+                                Nos experts vous accompagnent sur tous les aspects techniques
+                                et vous proposent des solutions personnalisées pour optimiser
+                                la gestion de votre cabinet.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-accordion-item">
+                        <button class="faq-accordion-header">
+                            <span class="faq-number">3.</span>
+                            <span class="faq-question-text">Combien coûte TheraDesk ?</span>
+                            <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>
+                                Nos tarifs s'adaptent à vos besoins spécifiques. Choisissez le
+                                nombre de séances présentielles et virtuelles qui
+                                correspondent à vos besoins. Sachez toujours exactement
+                                combien de séances il vous reste avec un suivi en temps réel.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-accordion-item">
+                        <button class="faq-accordion-header">
+                            <span class="faq-number">4.</span>
+                            <span class="faq-question-text">Comment utiliser TheraDesk</span>
+                            <svg class="faq-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <div class="faq-accordion-content">
+                            <p>
+                                TheraDesk est une plateforme Saas : vous pouvez donc vous
+                                connecter n'importe quand, n'importe où, sans passer forcément
+                                par votre ordinateur de travail. Vous possèdez un espace
+                                administrateur sécurisé, depuis lequel vous gérez vos patients
+                                ainsi que vous séances de thérapie. La platforme est simple à
+                                utiliser, très intuitive, et ne nécessite pas d'expertise
+                                spécifique.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="security-content scroll-animate">
+                <div class="tag">
+                    <img src="./images/ai-magic.svg" alt="" />
+                    <p>Passez à l’action</p>
+                </div>
+                <h2 class="section-title">Prêt à transformer votre pratique?</h2>
+                <p class="section-intro">
+                    Gérez vos séances, vos notes et vos patients en toute simplicité
+                    grâce à l’IA, tout en gardant le contrôle et la confidentialité de
+                    vos données.
+                </p>
+            </div>
+
+            <button class="btn-demo">
+                <p>Demander une démo</p>
+                <img src="./images/arrow-right.svg" alt="" class="arrow-img" />
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-glow-left">
+            <img src="./images/Glow-1.svg" alt="" />
+        </div>
+        <div class="footer-glow-right">
+            <img src="./images/Glow-2.svg" alt="" />
+        </div>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand">
+                    <img src="./images/Logo-footer.svg" alt="TheraDesk Logo" class="footer-logo" />
+                    <p class="footer-description">
+                        Simplifiez votre pratique et gagnez du temps avec
+                        notre plateforme intelligente qui centralise vos
+                        séances, notes et diagnostics, tout en
+                        garantissant sécurité et confidentialité.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#produit">Fonctionnalités</a></li>
+                        <li><a href="#usage">Cas d'usage</a></li>
+                        <li><a href="#tarifs">Tarifs</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Coordonnées</h4>
+                    <ul class="footer-contact">
+                        <li><a href="mailto:contact@TheraDesk.com">contact@TheraDesk.com</a></li>
+                        <li><a href="tel:+33612345678">+33 6 12 34 56 78</a></li>
+                        <li>12 rue de l'Organisation, 75000 Paris</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2025 TheraDesk. Tous droits réservés.</p>
+                <a href="#">Mentions légales</a>
+                <a href="#">Politique de confidentialité</a>
+                <a href="#">Conditions d'utilisation</a>
+            </div>
+        </div>
+    </footer>
+    <script src="./script.js"></script>
+</body>
+
+</html>

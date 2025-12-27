@@ -143,4 +143,77 @@ document.addEventListener('DOMContentLoaded', function() {
 
         serviceItems.forEach(item => serviceObserver.observe(item));
     }
+
+    // Pricing Toggle Functionality
+    const pricingToggleBtns = document.querySelectorAll('.pricing-toggle .toggle-btn');
+    const starterPrice = document.querySelector('.pricing-card:nth-child(1) .amount');
+    const expertPrice = document.querySelector('.pricing-card:nth-child(2) .amount');
+    
+    // Original prices
+    const prices = {
+        monthly: { starter: '$40', expert: '$50' },
+        yearly: { starter: '$32', expert: '$40' } // 20% discount
+    };
+
+    pricingToggleBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            pricingToggleBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            const isYearly = this.id === 'yearlyBtn';
+            if (isYearly) {
+                starterPrice.textContent = prices.yearly.starter;
+                expertPrice.textContent = prices.yearly.expert;
+            } else {
+                starterPrice.textContent = prices.monthly.starter;
+                expertPrice.textContent = prices.monthly.expert;
+            }
+        });
+    });
+
+    // Pricing Sliders Functionality
+    const pricingRanges = document.querySelectorAll('.pricing-range');
+    
+    function updateSlider(range) {
+        // Update value text
+        const group = range.closest('.slider-group');
+        const valueDisplay = group.querySelector('.slider-value p') || group.querySelector('.slider-value');
+        if (valueDisplay) {
+            let unit = '';
+            // Check original text to decide unit, or check slider max
+            // Simple heuristic based on max value or context
+            if (range.max == "120") unit = ' séances';
+            else if (range.max == "30") unit = ' heures';
+            
+            // Handle specific HTML structure (img + p or just text)
+            if (valueDisplay.tagName === 'DIV') {
+                 // It has an image and text, simpler to just find the text node or p
+                 const p = valueDisplay.querySelector('p');
+                 if(p) p.textContent = range.value + unit;
+                 else valueDisplay.childNodes[1].textContent = " " + range.value + unit; // Fallback for text node
+            } else if (valueDisplay.tagName === 'P') {
+                 valueDisplay.textContent = range.value + unit;
+            }
+        }
+
+        // Update background gradient for fill effect
+        const min = range.min ? range.min : 0;
+        const max = range.max ? range.max : 100;
+        const val = range.value;
+        const percentage = ((val - min) / (max - min)) * 100;
+        
+        range.style.backgroundImage = 'linear-gradient(90deg, #7BB3DF 0%, #5C97D5 100%)';
+        range.style.backgroundSize = `${percentage}% 100%`;
+        range.style.backgroundRepeat = 'no-repeat';
+    }
+
+    pricingRanges.forEach(range => {
+        // Initialize
+        updateSlider(range);
+
+        range.addEventListener('input', function() {
+            updateSlider(this);
+        });
+    });
 });
+
