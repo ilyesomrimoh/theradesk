@@ -144,62 +144,136 @@ document.addEventListener('DOMContentLoaded', function() {
         serviceItems.forEach(item => serviceObserver.observe(item));
     }
 
-    // Pricing Toggle Functionality
-    const pricingToggleBtns = document.querySelectorAll('.pricing-toggle .toggle-btn');
-    const starterPrice = document.querySelector('.pricing-card:nth-child(1) .amount');
-    const expertPrice = document.querySelector('.pricing-card:nth-child(2) .amount');
-    
-    // Original prices
-    const prices = {
-        monthly: { starter: '$40', expert: '$50' },
-        yearly: { starter: '$32', expert: '$40' } // 20% discount
+    // Pricing Logic
+    const pricingData = {
+        starter: {
+            sessions: {
+                40: { monthly: 43.20, yearly: 36.00 },
+                80: { monthly: 62.40, yearly: 52.00 },
+                120: { monthly: 81.60, yearly: 68.00 }
+            },
+            visio: {
+                0: { monthly: 0, yearly: 0 },
+                10: { monthly: 15.12, yearly: 12.60 },
+                20: { monthly: 30.24, yearly: 25.20 },
+                50: { monthly: 75.60, yearly: 63.00 }
+            }
+        },
+        expert: {
+            sessions: {
+                40: { monthly: 90.00, yearly: 75.00 },
+                80: { monthly: 162.00, yearly: 135.00 },
+                120: { monthly: 234.00, yearly: 195.00 }
+            },
+            visio: {
+                0: { monthly: 0, yearly: 0 },
+                10: { monthly: 20.16, yearly: 16.80 },
+                20: { monthly: 40.32, yearly: 33.60 },
+                50: { monthly: 100.80, yearly: 84.00 }
+            }
+        }
     };
 
+    const visioMap = [0, 10, 20, 50]; // Maps slider values 0-3 to actual hours
+
+    const pricingToggleBtns = document.querySelectorAll('.pricing-toggle .toggle-btn');
+    const pricingCards = document.querySelectorAll('.pricing-card');
+    
+    // Default State
+    let billingPeriod = 'monthly'; 
+
+    function calculatePrice(card, type) {
+        if (!pricingData[type]) return; // Skip if not starter or expert
+
+        const sessionInput = card.querySelector('.session-range');
+        const visioInput = card.querySelector('.visio-range');
+
+        const sessionVal = parseInt(sessionInput.value);
+        const visioStep = parseInt(visioInput.value);
+        const visioVal = visioMap[visioStep];
+
+        // Get Base Price
+        const basePrice = pricingData[type].sessions[sessionVal][billingPeriod];
+        
+        // Get Visio Add-on Price
+        const visioPrice = pricingData[type].visio[visioVal][billingPeriod];
+
+        const totalPrice = (basePrice + visioPrice).toFixed(2);
+
+        // Update Price Display
+        const amountDisplay = card.querySelector('.amount');
+        amountDisplay.textContent = '€' + totalPrice;
+        
+        // Update Period Display
+        const periodDisplay = card.querySelector('.period');
+        periodDisplay.textContent = billingPeriod === 'yearly' ? 'Par mois (facturé annuellement)' : 'Par mois';
+
+        return { sessionVal, visioVal, totalPrice };
+    }
+
+    function updateAllPrices() {
+        pricingCards.forEach((card, index) => {
+            let type = '';
+            if (index === 0) type = 'starter';
+            else if (index === 1) type = 'expert';
+            
+            if (type) {
+                calculatePrice(card, type);
+            }
+        });
+    }
+
+    // Toggle Monthly/Yearly
     pricingToggleBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             pricingToggleBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             
-            const isYearly = this.id === 'yearlyBtn';
-            if (isYearly) {
-                starterPrice.textContent = prices.yearly.starter;
-                expertPrice.textContent = prices.yearly.expert;
-            } else {
-                starterPrice.textContent = prices.monthly.starter;
-                expertPrice.textContent = prices.monthly.expert;
-            }
+            billingPeriod = this.id === 'yearlyBtn' ? 'yearly' : 'monthly';
+            updateAllPrices();
         });
     });
 
-    // Pricing Sliders Functionality
+    // Sliders Functionality
     const pricingRanges = document.querySelectorAll('.pricing-range');
     
-    function updateSlider(range) {
+    function updateSliderVisuals(range) {
         // Update value text
         const group = range.closest('.slider-group');
         const valueDisplay = group.querySelector('.slider-value p') || group.querySelector('.slider-value');
+        
+        let displayValue = range.value;
+        let unit = '';
+
+        if (range.classList.contains('visio-range')) {
+           displayValue = visioMap[range.value];
+           unit = ' heures';
+        } else {
+           unit = ' séances';
+        }
+
         if (valueDisplay) {
-            let unit = '';
-            // Check original text to decide unit, or check slider max
-            // Simple heuristic based on max value or context
-            if (range.max == "120") unit = ' séances';
-            else if (range.max == "30") unit = ' heures';
-            
-            // Handle specific HTML structure (img + p or just text)
-            if (valueDisplay.tagName === 'DIV') {
-                 // It has an image and text, simpler to just find the text node or p
+             // Handle specific HTML structure (img + p or just text)
+             if (valueDisplay.tagName === 'DIV') {
+                 // It has an image and text
                  const p = valueDisplay.querySelector('p');
-                 if(p) p.textContent = range.value + unit;
-                 else valueDisplay.childNodes[1].textContent = " " + range.value + unit; // Fallback for text node
+                 if(p) p.textContent = displayValue + unit;
+                 else if (valueDisplay.childNodes.length > 1) {
+                     // Try to find the text node after the image
+                     // This is a bit brittle, assumes img is first child
+                     let textNode = valueDisplay.childNodes[1]; 
+                     if(textNode.nodeType === 3) textNode.textContent = " " + displayValue + unit;
+                     else valueDisplay.lastChild.textContent = " " + displayValue + unit;
+                 }
             } else if (valueDisplay.tagName === 'P') {
-                 valueDisplay.textContent = range.value + unit;
+                 valueDisplay.textContent = displayValue + unit;
             }
         }
 
-        // Update background gradient for fill effect
-        const min = range.min ? range.min : 0;
-        const max = range.max ? range.max : 100;
-        const val = range.value;
+        // Update background gradient
+        const min = range.min ? parseFloat(range.min) : 0;
+        const max = range.max ? parseFloat(range.max) : 100;
+        const val = parseFloat(range.value);
         const percentage = ((val - min) / (max - min)) * 100;
         
         range.style.backgroundImage = 'linear-gradient(90deg, #7BB3DF 0%, #5C97D5 100%)';
@@ -208,12 +282,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     pricingRanges.forEach(range => {
-        // Initialize
-        updateSlider(range);
+        // Initialize visuals
+        updateSliderVisuals(range);
 
         range.addEventListener('input', function() {
-            updateSlider(this);
+            updateSliderVisuals(this);
+            
+            // Trigger price update if it's a pricing card slider
+            const card = this.closest('.pricing-card');
+            if (card) {
+                let type = '';
+                if (card.querySelector('.card-header h3').textContent.includes('Starter')) type = 'starter';
+                else if (card.querySelector('.card-header h3').textContent.includes('Expert')) type = 'expert';
+                
+                if (type) calculatePrice(card, type);
+            }
         });
     });
+
+    // Initialize prices on load
+    updateAllPrices();
 });
 
